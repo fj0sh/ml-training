@@ -11,4 +11,4 @@ const fahrenheitConverter = (fahrenheit) => {
     return fahrenheit;
 }
 
-fahrenheitConverter(140)
+fahrenheitConverter(100)
