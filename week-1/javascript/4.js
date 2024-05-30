@@ -13,11 +13,8 @@ const dateTimefn = () => {
     const hour  = date.getHours()
     const minute = date.getMinutes()
     const seconds = date.getSeconds()
-
-
+    
     const dateTimeFormat = `${month}-${days}-${year} ${hour}:${minute}:${seconds}`
-
     return dateTimeFormat
 }
-
 console.log(dateTimefn());
