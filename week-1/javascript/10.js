@@ -17,4 +17,4 @@ const secondNumberChecker = (num1, num2) => {
     }
 }
 
-console.log(secondNumberChecker(1,0))
+console.log(secondNumberChecker(5,0))
