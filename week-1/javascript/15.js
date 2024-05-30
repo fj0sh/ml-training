@@ -14,5 +14,5 @@ function numberIterator(n){
     }
 }
 
-console.log(numberIterator(20));
+numberIterator(20);
 
