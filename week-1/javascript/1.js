@@ -11,4 +11,4 @@ const numCheck = (num) => {
         return false;
 }
 
-console.log(numCheck(0))
+console.log(numCheck(1))
