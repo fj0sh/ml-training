@@ -4,3 +4,11 @@
  * @return {number} The sum of all numbers in the array.
  */
 
+function arrSum(...arr){
+    let total = 0;
+    for (const n of arr){
+        total += n;
+    }
+    return total;
+}
+console.log(arrSum(5,5))
