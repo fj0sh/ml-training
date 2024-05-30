@@ -8,6 +8,7 @@
 const fahrenheitConverter = (fahrenheit) => {
     const celsius = (fahrenheit-32) * 5/9;
     console.log(`${fahrenheit}°F = ${celsius}°C`);
+    return fahrenheit;
 }
 
 fahrenheitConverter(140)

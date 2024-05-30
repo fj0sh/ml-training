@@ -3,3 +3,4 @@
  * @param {number[]} arr The array of numbers.
  * @return {number} The sum of all numbers in the array.
  */
+
