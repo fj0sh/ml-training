@@ -14,4 +14,4 @@ const integerCheck = (num) => {
     }
 }
 
-integerCheck('2')
+integerCheck('test')
