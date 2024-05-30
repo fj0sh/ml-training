@@ -22,3 +22,29 @@ const students = [
   { name: "Tom", mark: 65 },
   { name: "Nancy", mark: 75 },
 ];
+
+function averageCalculator(){
+  const length = students.length
+  let total = 0
+  let average = 0
+  let grade = ""
+  for(x = 0; x < length; x++){
+    total += students[x]?.mark
+  }
+  average = total/length
+
+  if(average < 60){
+    return grade='F'
+  }else if(average > 60 && average < 70){
+    return grade = 'D'
+  }else if(average > 70 && average < 80){
+    return grade = 'C'
+  }else if(average > 80 && average < 90){
+    return grade = 'B'
+  }else{
+    return grade = 'A'
+  }
+  
+}
+
+console.log(averageCalculator())
