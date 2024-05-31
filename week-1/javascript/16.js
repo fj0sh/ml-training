@@ -6,12 +6,12 @@
  * - Tom: 65
  * - Nancy: 75
  *
- * Grade computed as follows:
+* Grade computed as follows:
  * < 60 : F
- * 60-70 : D
- * 70-80 : C
- * 80-90 : B
- * > 90 : A
+ * 60-69 : D
+ * 70-79 : C
+ * 80-89 : B
+ * >= 90 : A
  * @return {number} The average marks of the students.
  */
 
@@ -35,11 +35,11 @@ function averageCalculator(){
 
   if(average < 60){
     return grade='F'
-  }else if(average > 60 && average < 70){
+  }else if(average > 60 && average < 69){
     return grade = 'D'
-  }else if(average > 70 && average < 80){
+  }else if(average > 70 && average < 79){
     return grade = 'C'
-  }else if(average > 80 && average < 90){
+  }else if(average > 80 && average < 89){
     return grade = 'B'
   }else{
     return grade = 'A'
