@@ -9,3 +9,13 @@
  * @param {number[]} arr2
  * @returns {number[]}
  */
+
+const arrMerger = (arr1, arr2) => {
+
+   let newArr = arr1.concat(arr2);
+   let mergedArr = [...new Set(newArr)]
+
+   return mergedArr
+}
+
+console.log(arrMerger([1,2,3,4,5],[1,2,3,4,5,6]));
