@@ -5,10 +5,35 @@
  */
 
 // ENTITY OBJECT
-const entities = {
+
+// type EntityMap = {
+//   [key: string]: string;
+// };
+
+type EntityMap = {
+  "&": string;
+  "<": string;
+  ">": string;
+  '"': string;
+  "'": string;
+};
+
+const ent: EntityMap = {
   "&": "&amp;",
   "<": "&lt;",
   ">": "&gt;",
   '"': "&quot;",
   "'": "&apos;",
 };
+
+function strConverter(str: string): string {
+  let fixed: string = str;
+
+  for (const entity in ent) {
+    fixed = fixed.split(ent[entity]).join(entity);
+  }
+
+  return fixed;
+}
+
+console.log(strConverter("&amp; &lt; &gt; &quot; &apos;"));
