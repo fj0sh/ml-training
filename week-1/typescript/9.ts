@@ -3,3 +3,17 @@
  * @param {number} num The number to check.
  * @throws {Error} If the number is not a positive integer.
  */
+
+const negativeHandler = (num: number) => {
+  try {
+    if (num < 0) {
+      //   throw "Number is less than Zero";
+      throw new Error("Number is less than Zero");
+    }
+    return "Number passed";
+  } catch (error) {
+    return error;
+  }
+};
+
+console.log(negativeHandler(-5));
