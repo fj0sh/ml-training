@@ -16,3 +16,40 @@
  * @param {string[]} items
  * @returns {string}
  */
+
+let items = [{name:'apple', price: 10},
+            {name:'banana', price: 20},
+]
+function display() {
+    let sum = 0;
+    let totalItems = items.length
+    for(x in items){
+        sum += items[x].price
+    }
+
+    console.log(items);
+    console.log( `The cart has ${totalItems} total number of items and a total price of ${sum}`)
+}
+
+function addItem(itemName, itemPrice){
+    if(items.length >= 10){
+        console.log('The cart is already full');
+    }
+
+    items.push({name:itemName, price:itemPrice})
+    console.log( `${itemName} added with a price of ${itemPrice}`);
+    display()
+    
+
+}
+
+function removeItem(index) {
+    if (index >= 0 && index < items.length) {
+        items.splice(index, 1);
+        console.log(`Item at index ${index} removed from the cart`);
+        display();
+    }
+}
+
+removeItem(0);
+addItem("large intestine", 100000)
