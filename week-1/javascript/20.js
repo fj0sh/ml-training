@@ -7,3 +7,18 @@
  * @param {string} str
  * @returns {string}
  */
+
+function caseSwapper(str){
+    let res = ''
+
+    for(let x of str){
+        if(x === x.toUpperCase()){
+            res += x.toLowerCase()
+        }else{
+            res +=x.toUpperCase()
+        }
+    }
+    return res
+}
+
+console.log(caseSwapper("WeLLo HorlD"))
