@@ -7,3 +7,19 @@
  * @param {string} str
  * @returns {string}
  */
+
+
+function caseSwap(str:string):string {
+    let res = "";
+  
+    for (let x of str) {
+      if (x === x.toUpperCase()) {
+        res += x.toLowerCase();
+      } else {
+        res += x.toUpperCase();
+      }
+    }
+    return res;
+  }
+  
+  console.log(caseSwap("WeLLo HorlD"));
