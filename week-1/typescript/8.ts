@@ -20,4 +20,4 @@ const constantRemover = (str: string): string => {
   return res;
 };
 
-console.log(constantRemover("Hello Warld!"));
+console.log(constantRemover("Hello Ward!"));
