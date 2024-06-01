@@ -6,3 +6,14 @@
  * Example string: "The quick brown fox jumps over the lazy dog"
  * Expected output: "The Quick Brown Fox Jumps Over The Lazy Dog"
  */
+
+function upCase(str:string):string {
+    let words = str.split(" ");
+    for (let x = 0; x < words.length; x++) {
+      words[x] = words[x][0].toUpperCase() + words[x].substring(1);
+    }
+  
+    return words.join(" ");
+  }
+  
+  console.log(upCase("The quick brown fox jumps over the lazy dog"));
