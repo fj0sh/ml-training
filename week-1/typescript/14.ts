@@ -6,3 +6,17 @@
  * Example array: [5, 2, 8, 1, 9, 3]
  * Expected output: "The lowest number is 1 and the highest number is 9."
  */
+
+let arrNum = [5, 2, 8, 1, 9, 3];
+
+const arrCheck = (arr:number[]):string => {
+  const sorted = arr.sort();
+
+  return(
+    `The lowest number is ${sorted[0]} and the highest number is ${
+      sorted[arr.length - 1]
+    }.`
+  );
+};
+
+console.log(arrCheck(arrNum));
