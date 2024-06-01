@@ -19,3 +19,46 @@
  * @param {string} password
  * @returns {string}
  */
+
+const char = '!@#$%^&*()_+=<>/:"[]?';
+const arrChar = char.split("");
+
+function passValidator(password:string):string {
+  if (password.length < 8) {
+    return "Password must be at least 8 characters long";
+  }
+
+  let hasUpper = false;
+  let hasLower = false;
+  let hasNum = false;
+  let hasChar = false;
+
+  for (let i of password) {
+    if (i >= "a" && i <= "z") {
+      hasLower = true;
+    } else if (i >= "A" && i <= "Z") {
+      hasUpper = true;
+    } else if (!isNaN(parseInt(i))) {
+        hasNum = true;
+    } else if (char.includes(i)) {
+      hasChar = true;
+    }
+  }
+
+  if (hasUpper && hasLower && hasNum && hasChar) {
+    return "Password is valid";
+  }
+
+  if (!hasLower) {
+    return "Password must contain at least one lowercase letter";
+  } else if (!hasUpper) {
+    return "Password must contain at least one uppercase letter";
+  } else if (!hasNum) {
+    return "Password must contain at least one number";
+  } else if (!hasChar) {
+    return "Password must contain at least one special character";
+  }
+
+  return "";
+}
+console.log(passValidator("?Password123"));
