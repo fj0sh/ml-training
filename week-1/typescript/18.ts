@@ -1,18 +1,40 @@
-/**
- * Create a shopping cart that allows the user to add items to the cart and remove items from the cart. An item is a javascript object with the following properties:
- * - name: the name of the item
- * - price: the price of the item
- *
- * The shopping cart should be able to store up to 10 items.
- * The shopping cart should be able to display the total price of the items in the cart.
- * The shopping cart should be able to display the total number of items in the cart.
- *
- * Example:
- * - add item "apple" to cart
- * - remove item "apple" from cart
- * - display total price of items in cart
- * - display total number of items in cart
- *
- * @param {string[]} items
- * @returns {string}
- */
+type itemType = { name: string, price: number }[];
+
+let item: itemType = [
+    { name: "apple", price: 10 },
+    { name: "banana", price: 20 },
+];
+
+function disp(): { totalItems: number, totalPrice: number } {
+    let totalPrice = 0;
+    let totalItems = item.length;
+    for (let x in item) {
+        totalPrice += item[x].price;
+    }
+    return { totalItems, totalPrice };
+}
+
+function addItems(itemName: string, itemPrice: number): void {
+    if (item.length >= 10) {
+        console.log("The cart is already full");
+        return;
+    }
+
+    item.push({ name: itemName, price: itemPrice });
+    console.log(`${itemName} added with a price of ${itemPrice}`);
+    const { totalItems, totalPrice } = disp();
+    console.log(`The cart has ${totalItems} total number of items and a total price of ${totalPrice}`);
+}
+
+function removeItems(index: number): string {
+    if (index >= 0 && index < item.length) {
+        item.splice(index, 1);
+        const { totalItems, totalPrice } = disp();
+        return `Item at index ${index} removed from the cart. The cart now has ${totalItems} total number of items and a total price of ${totalPrice}`;
+    } else {
+        return "Invalid index. Item not removed from the cart.";
+    }
+}
+
+console.log(removeItems(0));
+addItems("large intestine", 100000);
