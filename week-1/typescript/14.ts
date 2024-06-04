@@ -9,14 +9,12 @@
 
 let arrNum = [5, 2, 8, 1, 9, 3];
 
-const arrCheck = (arr:number[]):string => {
+const arrCheck = (arr: number[]): string => {
   const sorted = arr.sort();
 
-  return(
-    `The lowest number is ${sorted[0]} and the highest number is ${
-      sorted[arr.length - 1]
-    }.`
-  );
+  return `The lowest number is ${sorted[0]} and the highest number is ${
+    sorted[arr.length - 1]
+  }.`;
 };
 
 console.log(arrCheck(arrNum));
