@@ -7,23 +7,42 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class TodoService {
   constructor(private readonly prisma: PrismaService) {}
 
-  create(createTodoDto: CreateTodoDto) {
-    return 'This action adds a new todo';
+  async getTodos() {
+    return await this.prisma.todo.findMany();
   }
 
-  findAll() {
-    return `This action returns all todo`;
+  async getOneTodo(id) {
+    try {
+      return await this.prisma.todo.findUnique({ where: { id: id } });
+    } catch (error) {
+      return error;
+    }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} todo`;
+  async createTodo(createTodoDto: CreateTodoDto) {
+    try {
+      return await this.prisma.todo.create({ data: createTodoDto });
+    } catch (error) {
+      return error;
+    }
   }
 
-  update(id: number, updateTodoDto: UpdateTodoDto) {
-    return `This action updates a #${id} todo`;
+  async setTodoDone(id: number, updateTodoDto: UpdateTodoDto) {
+    try {
+      return await this.prisma.todo.update({
+        where: { id: id },
+        data: { ...updateTodoDto, isCompleted: true },
+      });
+    } catch (error) {
+      return error;
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} todo`;
+  async removeTodo(id) {
+    try {
+      return await this.prisma.todo.delete({ where: { id: id } });
+    } catch (error) {
+      return error;
+    }
   }
 }
