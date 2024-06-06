@@ -16,10 +16,10 @@ import { UpdateContactDto } from './dto/update-contact.dto';
 export class ContactsController {
   constructor(private readonly contactsService: ContactsService) {}
 
-  @Get()
-  getContacts() {
-    return this.contactsService.getAllContacts();
-  }
+  // @Get()
+  // getContacts() {
+  //   return this.contactsService.getAllContacts();
+  // }
 
   @Get()
   searchContacts(@Query() query: CreateContactDto) {

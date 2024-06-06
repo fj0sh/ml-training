@@ -7,23 +7,32 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class ContactsService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async getAllContacts() {
-    try {
-      return await this.prisma.contact.findMany();
-    } catch (error) {
-      return error;
-    }
-  }
+  // async getAllContacts() {
+  //   try {
+  //     return await this.prisma.contact.findMany();
+  //   } catch (error) {
+  //     return error;
+  //   }
+  // }
 
   async searchContact(query: CreateContactDto) {
-    const { contactName, phoneNumber } = query;
-    const where = {};
+    let test = {};
 
-    if (contactName) where['name'] = contactName;
-    if (phoneNumber) where['phone'] = phoneNumber;
+    if (query.contactName) {
+      test = { contactName: query.contactName };
+      console.log(test);
+    } else if (query.phoneNumber) {
+      test = { phoneNumber: query.phoneNumber };
+      console.log(test);
+    } else if (query.id) {
+      test = { id: query.id };
+      console.log(test);
+    }
 
     try {
-      return await this.prisma.contact.findMany({ where });
+      return await this.prisma.contact.findMany({
+        where: test,
+      });
     } catch (error) {
       return error;
     }
