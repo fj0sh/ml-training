@@ -14,8 +14,10 @@ datasource db {
 }
 
 model todo {
-  id          Int     @id @default(autoincrement())
-  title       String  @default("")
-  content     String  @default("")
-  isCompleted Boolean @default(false)
+  id            Int       @id @default(autoincrement())
+  title         String    @default("")
+  content       String    @default("")
+  dateCreated   DateTime  @default(now())
+  isCompleted   Boolean   @default(false)
+  dateCompleted DateTime?
 }

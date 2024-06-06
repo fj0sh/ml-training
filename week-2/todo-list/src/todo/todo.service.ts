@@ -29,9 +29,10 @@ export class TodoService {
 
   async setTodoDone(id: number, updateTodoDto: UpdateTodoDto) {
     try {
+      const dateCompleted = new Date().toISOString();
       await this.prisma.todo.update({
         where: { id: id },
-        data: { ...updateTodoDto, isCompleted: true },
+        data: { ...updateTodoDto, isCompleted: true, dateCompleted },
       });
       return `Todo number ${id} has been completed!!`;
     } catch (error) {
