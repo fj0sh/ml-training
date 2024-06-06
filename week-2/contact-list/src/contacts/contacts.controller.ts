@@ -16,11 +16,6 @@ import { UpdateContactDto } from './dto/update-contact.dto';
 export class ContactsController {
   constructor(private readonly contactsService: ContactsService) {}
 
-  // @Get()
-  // getContacts() {
-  //   return this.contactsService.getAllContacts();
-  // }
-
   @Get()
   searchContacts(@Query() query: CreateContactDto) {
     return this.contactsService.searchContact(query);
@@ -29,5 +24,18 @@ export class ContactsController {
   @Post()
   createContact(@Body() createContactDto: CreateContactDto) {
     return this.contactsService.createContact(createContactDto);
+  }
+
+  @Patch(':id')
+  editContacts(
+    @Param('id') id: number,
+    @Body() updateContactDto: UpdateContactDto,
+  ) {
+    return this.contactsService.editContact(+id, updateContactDto);
+  }
+
+  @Delete(':id')
+  deleteContact(@Param('id') id: number) {
+    return this.contactsService.deleteContact(+id);
   }
 }

@@ -7,14 +7,6 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class ContactsService {
   constructor(private readonly prisma: PrismaService) {}
 
-  // async getAllContacts() {
-  //   try {
-  //     return await this.prisma.contact.findMany();
-  //   } catch (error) {
-  //     return error;
-  //   }
-  // }
-
   async searchContact(query: CreateContactDto) {
     let test = {};
 
@@ -25,7 +17,7 @@ export class ContactsService {
       test = { phoneNumber: query.phoneNumber };
       console.log(test);
     } else if (query.id) {
-      test = { id: query.id };
+      test = { id: Number(query.id) };
       console.log(test);
     }
 
@@ -46,8 +38,21 @@ export class ContactsService {
     }
   }
 
-  async editContact() {
+  async editContact(id, updateContactDto: UpdateContactDto) {
     try {
+      const dateUpdated = new Date().toISOString();
+      return await this.prisma.contact.update({
+        where: { id: id },
+        data: { ...updateContactDto, dateUpdated },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async deleteContact(id) {
+    try {
+      return await this.prisma.contact.delete({ where: { id: id } });
     } catch (error) {
       return error;
     }
