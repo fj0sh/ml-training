@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE `todo` ADD COLUMN `content` VARCHAR(191) NOT NULL DEFAULT '',
+    ADD COLUMN `isCompleted` BOOLEAN NOT NULL DEFAULT false,
+    ADD COLUMN `title` VARCHAR(191) NOT NULL DEFAULT '';

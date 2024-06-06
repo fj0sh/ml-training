@@ -9,3 +9,13 @@
  * @param {number[]} arr2
  * @returns {number[]}
  */
+
+const mergeArr = (arr1:number[], arr2:number[]):number[] => {
+    let newArr = arr1.concat(arr2);
+    let mergedArr = [...new Set(newArr)];
+  
+    return mergedArr;
+  };
+  
+  console.log(mergeArr([1, 2, 3, 4, 5], [1, 2, 3, 4, 5, 6]));
+  
