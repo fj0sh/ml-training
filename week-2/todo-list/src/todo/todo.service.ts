@@ -29,10 +29,11 @@ export class TodoService {
 
   async setTodoDone(id: number, updateTodoDto: UpdateTodoDto) {
     try {
-      return await this.prisma.todo.update({
+      await this.prisma.todo.update({
         where: { id: id },
         data: { ...updateTodoDto, isCompleted: true },
       });
+      return `Todo number ${id} has been completed!!`;
     } catch (error) {
       return error;
     }
@@ -40,7 +41,8 @@ export class TodoService {
 
   async removeTodo(id) {
     try {
-      return await this.prisma.todo.delete({ where: { id: id } });
+      await this.prisma.todo.delete({ where: { id: id } });
+      return `Todo number ${id} is Deleted`;
     } catch (error) {
       return error;
     }
