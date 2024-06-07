@@ -13,17 +13,6 @@ export class HabitService {
         data: {
           name: createHabitDto.name,
           description: createHabitDto.description,
-          goals: {
-            create: createHabitDto.goals.map((goal) => ({
-              target: goal.target,
-              unit: goal.unit,
-              startDate: goal.startDate,
-              endDate: goal.endDate,
-            })),
-          },
-        },
-        include: {
-          goals: true,
         },
       });
     } catch (error) {
@@ -38,6 +27,44 @@ export class HabitService {
           goals: true,
           progress: true,
         },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async getSingleHabit(id: number) {
+    try {
+      return this.prisma.habit.findUnique({
+        where: { id: id },
+        include: {
+          goals: true,
+          progress: true,
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async editHabit(id, habitDto: UpdateHabitDto) {
+    try {
+      return this.prisma.habit.update({
+        where: { id: id },
+        data: {
+          name: habitDto.name,
+          description: habitDto.description,
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async deleteHabit(id) {
+    try {
+      return this.prisma.habit.delete({
+        where: { id: id },
       });
     } catch (error) {
       return error;

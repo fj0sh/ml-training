@@ -6,4 +6,8 @@ import { PrismaService } from 'src/prisma/prisma.service';
 @Injectable()
 export class ProgressService {
   constructor(private readonly prisma: PrismaService) {}
+
+  async addHabitProgress(createProgressDto: CreateProgressDto) {
+    return await this.prisma.progress.create({ data: createProgressDto });
+  }
 }

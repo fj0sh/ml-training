@@ -14,4 +14,9 @@ import { UpdateProgressDto } from './dto/update-progress.dto';
 @Controller('progress')
 export class ProgressController {
   constructor(private readonly progressService: ProgressService) {}
+
+  @Post()
+  addHabitProgress(@Body() createProgressDto: CreateProgressDto) {
+    return this.progressService.addHabitProgress(createProgressDto);
+  }
 }
