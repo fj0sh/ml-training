@@ -10,4 +10,10 @@ export class ProgressService {
   async addHabitProgress(createProgressDto: CreateProgressDto) {
     return await this.prisma.progress.create({ data: createProgressDto });
   }
+
+  async showTotalProgress() {
+    return await this.prisma.progress.groupBy({
+      by: 'unit',
+    });
+  }
 }

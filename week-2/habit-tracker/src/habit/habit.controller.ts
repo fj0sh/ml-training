@@ -35,6 +35,11 @@ export class HabitController {
     return this.habitService.editHabit(+id, habitDto);
   }
 
+  @Patch(':id')
+  completeHabit(@Param('id') id: number, @Body() habitDto: UpdateHabitDto) {
+    return this.habitService.editHabit(+id, habitDto);
+  }
+
   @Delete(':id')
   deleteHabit(@Param('id') id: number) {
     return this.habitService.deleteHabit(+id);
