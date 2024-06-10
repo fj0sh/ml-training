@@ -21,6 +21,16 @@ export class LendingController {
     return this.lendingService.getAllLending();
   }
 
+  @Get('dues')
+  getDueBooks() {
+    return this.lendingService.bookDueDates();
+  }
+
+  @Get('returned')
+  showReturned() {
+    return this.lendingService.showReturned();
+  }
+
   @Post()
   borrowBooks(@Body() createLendingDto: CreateLendingDto) {
     return this.lendingService.borrowBooks(createLendingDto);

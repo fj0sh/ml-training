@@ -53,4 +53,56 @@ export class LendingService {
       return error;
     }
   }
+
+  async showReturned() {
+    try {
+      return this.prisma.lending.findMany({
+        where: {
+          returnedAt: {
+            not: null,
+          },
+        },
+        select: {
+          id: true,
+          borrower: true,
+          returnedAt: true,
+          dueDate: true,
+
+          book: {
+            select: {
+              title: true,
+              author: true,
+              isbn: true,
+            },
+          },
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async bookDueDates() {
+    try {
+      return this.prisma.lending.findMany({
+        where: {
+          returnedAt: null,
+        },
+        select: {
+          book: {
+            select: {
+              title: true,
+              isbn: true,
+              author: true,
+            },
+          },
+          id: true,
+          borrower: true,
+          dueDate: true,
+        },
+      });
+    } catch (error) {
+      return error;
+    }
+  }
 }
