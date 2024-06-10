@@ -19,4 +19,9 @@ export class ProgressController {
   addHabitProgress(@Body() createProgressDto: CreateProgressDto) {
     return this.progressService.addHabitProgress(createProgressDto);
   }
+
+  @Get()
+  showTotalProgress() {
+    return this.progressService.showTotalProgress();
+  }
 }
