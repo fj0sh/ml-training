@@ -25,4 +25,20 @@ export class LendingController {
   borrowBooks(@Body() createLendingDto: CreateLendingDto) {
     return this.lendingService.borrowBooks(createLendingDto);
   }
+
+  @Patch(':id')
+  updateBook(
+    @Param('id') id: number,
+    @Body() updateLendingDto: UpdateLendingDto,
+  ) {
+    return this.lendingService.updateLending(+id, updateLendingDto);
+  }
+
+  @Patch('return/:id')
+  returnBook(
+    @Param('id') id: number,
+    @Body() updateLendingDto: UpdateLendingDto,
+  ) {
+    return this.lendingService.returnBook(+id, updateLendingDto);
+  }
 }

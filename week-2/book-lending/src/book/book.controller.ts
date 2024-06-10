@@ -10,6 +10,7 @@ import {
 import { BookService } from './book.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
+import { PassThrough } from 'stream';
 
 @Controller('book')
 export class BookController {
@@ -23,5 +24,10 @@ export class BookController {
   @Post()
   addBook(@Body() createBookDto: CreateBookDto) {
     return this.bookService.addBook(createBookDto);
+  }
+
+  @Patch(':id')
+  updateBook(@Param('id') id: number, @Body() updateBookDto: UpdateBookDto) {
+    return this.bookService.updateBook(+id, updateBookDto);
   }
 }

@@ -8,10 +8,30 @@ export class BookService {
   constructor(private readonly prisma: PrismaService) {}
 
   async getAllBooks() {
-    return this.prisma.book.findMany();
+    try {
+      return this.prisma.book.findMany();
+    } catch (error) {
+      return error;
+    }
   }
 
   async addBook(createBookDto) {
-    return this.prisma.book.create({ data: createBookDto });
+    try {
+      return this.prisma.book.create({ data: createBookDto });
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async updateBook(id: number, updateBookDto: UpdateBookDto) {
+    try {
+      // const dateUpdated = new Date().toISOString();
+      return this.prisma.book.update({
+        where: { id: id },
+        data: { ...updateBookDto },
+      });
+    } catch (error) {
+      return error;
+    }
   }
 }
