@@ -6,4 +6,12 @@ import { PrismaService } from 'src/prisma/prisma.service';
 @Injectable()
 export class BookService {
   constructor(private readonly prisma: PrismaService) {}
+
+  async getAllBooks() {
+    return this.prisma.book.findMany();
+  }
+
+  async addBook(createBookDto) {
+    return this.prisma.book.create({ data: createBookDto });
+  }
 }

@@ -1,34 +1,28 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { LendingService } from './lending.service';
 import { CreateLendingDto } from './dto/create-lending.dto';
 import { UpdateLendingDto } from './dto/update-lending.dto';
+import { BookService } from 'src/book/book.service';
 
 @Controller('lending')
 export class LendingController {
   constructor(private readonly lendingService: LendingService) {}
 
-  @Post()
-  create(@Body() createLendingDto: CreateLendingDto) {
-    return this.lendingService.create(createLendingDto);
-  }
-
   @Get()
-  findAll() {
-    return this.lendingService.findAll();
+  getAllLendings() {
+    return this.lendingService.getAllLending();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.lendingService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateLendingDto: UpdateLendingDto) {
-    return this.lendingService.update(+id, updateLendingDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.lendingService.remove(+id);
+  @Post()
+  borrowBooks(@Body() createLendingDto: CreateLendingDto) {
+    return this.lendingService.borrowBooks(createLendingDto);
   }
 }

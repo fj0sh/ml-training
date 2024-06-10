@@ -14,4 +14,14 @@ import { UpdateBookDto } from './dto/update-book.dto';
 @Controller('book')
 export class BookController {
   constructor(private readonly bookService: BookService) {}
+
+  @Get()
+  getAllBooks() {
+    return this.bookService.getAllBooks();
+  }
+
+  @Post()
+  addBook(@Body() createBookDto: CreateBookDto) {
+    return this.bookService.addBook(createBookDto);
+  }
 }
